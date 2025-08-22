@@ -4,11 +4,11 @@ It's like browsing "Featured Carts" in SPLORE... But they are ranked by STARs!
 
 # Controls
 
-- ll rr: previous / next page
-- uu dd: previous / next cart
-- xx oo: run cart
+- ⬅️ ➡️: previous / next page
+- ⬆️ ⬇️: previous / next cart
+- ❎ 🅾️: run cart
 
-After you are done with the cart, enter the pause menu and select the last option, `back to stSPLORE`.
+After you are done with the cart, enter the pause menu and select the last option, `back to ★SPLORE`.
 
 ![STAR SPORE in action](main_screenshots/star_splore_demo.gif "STAR SPORE in action")
 
