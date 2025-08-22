@@ -10,9 +10,9 @@ No other categories or subcategires ("New Carts" in "Releases", "Work in Progess
 
 This scraper consists of 5 steps.
 
-1. Reset the scraper, erasing results produced by previous scrapes. Carts previously downloaded are not deleted.
-2. Scrape pages in the "Featured Carts" subcategory for linked posts.
-3. Scrape the first cart in each post found in the previous step.
+1. Reset the scraper, erasing temp and result files. Carts previously downloaded are not deleted.
+2. Scrape "Featured Carts" pages looking for posts linked.
+3. Scrape the posts found in the previous step looking for carts.
 4. Write result files.
 5. Download scraped carts (optional).
 
@@ -20,11 +20,11 @@ Each step is executed by a python script.
 
 ## Subdirectories
 
-Starting from directory where this `README.md` file is, scraper files are located on the following subdirectries:
+Starting from the directory where this `README.md` is, files are located on the following subdirectries:
 
 - `scripts`: that's where the python scripts are located.
 - `temp`: temporary files will be created here.
-- `results`: result files will be created here (more on that below).
+- `results`: result files will be created here.
 - `carts`: carts will optionally be downloaded here, in .p8.png format.
 
 Aside from `scripts`, all other subdirectories will be created if necessary in step 1.
@@ -35,7 +35,7 @@ Step 4 will create the following files in the `results` subdirectory:
 
 - `featured_carts.html`: this file contains all collected information and links for every scraped cart.
 - `featured_carts.lua`: this file will be included by `star_splore.p8`.
-- `featured_carts_urls.txt`: this file contains download URLs for all scraped carts.
+- `featured_carts_urls.txt`: this file contains download URLs for all scraped carts. This can be used to download them all with [Wget](https://www.gnu.org/software/wget/).
 
 ## Pyhton
 
@@ -44,29 +44,15 @@ To run the scripts you will need python, install it from [python.org](https://ww
 - Make sure you select the option to add python to your path.
 - If you use python for other stuff and know what you are doing, you may create a virtual environment for this scraper. If not, don't bother.
 
-Now, let's install the required dependencies.
+Now, let's install the required dependencies. This scraper needs `requests`, `pandas` and `beautifulsoup4`. I frozen the exact versions so you can install them all with a single command.
 
-Open a command prompt and go to the `scripts` subdirectory. Do not close this command prompt, you will need it to run the scripts later.
-
-### Option 1: install dependencies using requirements.txt
-
-This is the safest option, as it will install the exact version of each package frozen during the scraper development. Type the following command:
+Open a command prompt and go to the `scripts` subdirectory. Type the following command:
 
 ```
 python -m pip install -r requirements.txt
 ```
 
-### Option 2: install the latest version of each dependency
-
-You can try installing the latest version of each package used by the scripts, but be aware that this can potentially create problems if future versions introduce any breaking changes.
-
-Anyway, these commands should be typed one by one.
-
-```
-python -m pip install requests
-python -m pip install beautifulsoup4
-python -m pip install pandas
-```
+Do not close the command prompt, you will need it to run the scripts in the next section.
 
 ## Scripts
 
@@ -90,7 +76,7 @@ python 2_scrape_featured_pages.py
 
 - Estimated time to complete: 10 seconds.
 
-### Step 3: scrape the first cart in each post linked in the "Featured Carts" pages
+### Step 3: scrape featured carts
 
 Type the following command:
 
@@ -124,9 +110,9 @@ python 5_download_featured_carts.py
 
 ## Retries
 
-If this scraper gets a connection error it employs the simplest possible retry strategy: it simply tries again.
+If this scraper gets a connection error it employs the simplest possible retry strategy: it simply tries again, no delay involved.
 - If the error persists, the script will abort after retrying the same URL 3 times. If that happens, simply wait a while and then run that step again. 
-- If you need to run steps 3 or 5 again (the longer ones), the scripts will skip all carts already scraped / downloaded successfully.
+- If you need to run steps 3 or 5 again (the longest ones), the scripts will skip all carts already scraped / downloaded successfully.
 
 ## Use responsibly
 
