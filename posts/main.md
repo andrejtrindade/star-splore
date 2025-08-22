@@ -67,4 +67,4 @@ Dumping these 500 or so games together with **STAR SPLORE** in an handheld is a 
 
 I managed to squeeze in a couple outlines to celebrate the launch of [PICO-8 0.2.7](https://www.lexaloffle.com/bbs/?tid=150992) earlier this month.
 
-I also used rrectfill() on the page counter!
+I also used `rrectfill()` on the page counter!
