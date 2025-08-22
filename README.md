@@ -10,7 +10,7 @@ A launcher for PICO-8 featured carts ranked by stars.
 
 ## How to play
 
-You can play the game online at the [Lexaloffle BBS - LINK PENDING]().
+You can play the game online at the [Lexaloffle BBS](https://www.lexaloffle.com/bbs/?tid=151129).
 
 You can also download the [cart](exports/cart/star_splore.p8.png) to play offline if you have PICO-8.
 
