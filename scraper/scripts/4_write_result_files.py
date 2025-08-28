@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, date
 
 import scraper_definitions as sd
 
@@ -70,11 +70,7 @@ def write_html(df_sorted, html_filename):
 def write_lua(df_sorted, lua_filename):
     print(f"    Formatting Lua...")
     
-    # get latest cart
-    df_date = df_sorted.sort_values(by=["date_time"], ascending=[False])
-    latest_cart = df_date.iloc[0]
-
-    lua_content = f"latest_cart = \"{latest_cart.date}\"\n\n"
+    lua_content = f"version = \"{date.today()}\"\n\n"
     lua_content += "data = {\n"
 
     carts = 0

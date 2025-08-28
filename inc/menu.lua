@@ -27,7 +27,7 @@ draw = function()
 	local to = min(from + 9, max_cart)
 
 	print("\^o5ff"..c_star.."splore", 1, 1, 0)
-	print_right(latest_cart, 1, 5)
+	print_right(version, 1, 5)
 
 	y = 8
 	for i=from,to do
