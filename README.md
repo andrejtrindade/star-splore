@@ -5,8 +5,9 @@
 [![License](https://img.shields.io/badge/license-CC--BY--NC--SA--4.0-green)](LICENSE)
 [![Language](https://img.shields.io/badge/language-Lua-blue)](https://www.lua.org/)
 [![Language](https://img.shields.io/badge/language-Python-blue)]([https://www.lua.org/](https://www.python.org/))
+[![GitHub Release](https://img.shields.io/github/v/release/andrejtrindade/star-splore)](releases)
 
-A launcher for PICO-8 featured carts ranked by stars.
+A launcher for PICO-8 featured carts, ranked by stars.
 
 ## How to play
 
