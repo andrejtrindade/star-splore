@@ -1,7 +1,7 @@
 -- main.lua
 
 function _init()
-	if not cartdata("ajt_star_splore_1") then
+	if not cartdata(cartdata_id) then
 		for i=0,63 do dset(i, 0) end
 		poke2(0x5e00, 1)
 	end

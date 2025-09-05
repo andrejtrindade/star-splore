@@ -15,6 +15,7 @@ SCRAPED_FEATURED_CARTS_FILENAME    = "../temp/3_scraped_featured_carts.csv"
 # Result files
 RESULT_HTML_FILENAME               = "../results/featured_carts.html"
 RESULT_LUA_FILENAME                = "../results/featured_carts.lua"
+RESULT_LUA_BY_YEAR_FILENAME        = "../results/featured_carts_by_year.lua"
 RESULT_URLS_FILENAME               = "../results/featured_carts_urls.txt"
 
 # Lexaloffle links

@@ -9,6 +9,9 @@ c_left, c_right = "⬅️", "➡️"
 c_up,   c_down  = "⬆️", "⬇️"
 c_x,    c_o     = "❎", "🅾️"
 
+cartdata_id = "ajt_star_splore_1"
+by_year     = false
+
 #include scraper/results/featured_carts.lua
 
 #include inc/helper.lua

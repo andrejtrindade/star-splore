@@ -131,8 +131,14 @@ if __name__ == "__main__":
     print("--- Sorting carts...")
     df_sorted = df_carts.sort_values(by=["stars", "date_time"], ascending=[False, False])
 
+    print("--- Sorting by year...")
+    df_year = df_carts
+    df_year["year"] = df_year["date"].str.slice(0,4)
+    df_year = df_year.sort_values(by=["year", "stars", "date_time"], ascending=[False, False, False])
+
     write_html(df_sorted, sd.RESULT_HTML_FILENAME)
     write_lua(df_sorted, sd.RESULT_LUA_FILENAME)
+    write_lua(df_year, sd.RESULT_LUA_BY_YEAR_FILENAME)
     extract_urls(df_sorted, sd.RESULT_URLS_FILENAME)
 
     end = datetime.now()

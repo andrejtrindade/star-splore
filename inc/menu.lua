@@ -28,6 +28,7 @@ draw = function()
 
 	print("\^o5ff"..c_star.."splore", 1, 1, 0)
 	print_right(version, 1, 5)
+	if (by_year) print_center("by year", 1, 5)
 
 	y = 8
 	for i=from,to do

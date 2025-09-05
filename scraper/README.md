@@ -35,6 +35,7 @@ Step 4 will create the following files in the `results` subdirectory:
 
 - `featured_carts.html`: this file contains all collected information and links for every scraped cart.
 - `featured_carts.lua`: this file will be included by `star_splore.p8`.
+- `featured_carts_by_year.lua`: this file will be included by `star_splore_by_year.p8`.
 - `featured_carts_urls.txt`: this file contains download URLs for all scraped carts. This can be used to download them all with [Wget](https://www.gnu.org/software/wget/).
 
 ## Pyhton
