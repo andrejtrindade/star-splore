@@ -13,7 +13,7 @@ A launcher for PICO-8 featured carts, ranked by stars.
 
 You can play the game online at the [Lexaloffle BBS](https://www.lexaloffle.com/bbs/?tid=151129).
 
-You can also download the [cart](exports/cart/star_splore.p8.png) to play offline if you have PICO-8.
+You can also download the [cart](exports/cart/) to play offline if you have PICO-8.
 
 ## PICO-8
 
@@ -26,8 +26,9 @@ This project is mostly done. Therefore, I'm not accepting pull requests for this
 ## Files and Folders
 
 - **star_splore.p8**: PICO-8 source code, containing graphics, sound and code.
+- **star_splore_by_year.p8**: alternative version, ranked by year first.
 - **inc**: the lua files included in the .p8 file.
-- **exports/cart/star_splore.p8.png**: image with the compressed cartridge embedded into it, playable in PICO-8.
+- **exports/cart**: image with the compressed cartridge embedded into it, playable in PICO-8.
 - **scraper**: the scraper used to collect featured carts information from the [Lexaloffle BBS](https://www.lexaloffle.com/bbs/).
 - **posts**: drafts of topics to be posted on the BBS, including screenshots and GIFs.
 
