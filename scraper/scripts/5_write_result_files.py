@@ -14,7 +14,7 @@ table, th, td {
 </style><body>
 <h1>STAR SPLORE's scraper results</h1>
 <table>
-<tr><th>Rank</th><th>Stars</th><th>Published</th><th>Thread</th><th>Post</th><th>Cart</th><th>Author</th></tr>
+<tr><th>Rank</th><th>Stars</th><th>Published</th><th>Thread</th><th>Post</th><th>Cart</th><th>Author</th><th>Game Genres</th></tr>
 """
 
 HTML_END = """
@@ -23,7 +23,17 @@ HTML_END = """
 </html>
 """
 
-def write_html(df_sorted, html_filename):
+def find_genres(df_genres, cart_id_versionless, compact):
+    genres = ""
+    genres_rows = df_genres[df_genres["cart_id_versionless"] == cart_id_versionless]
+    if not genres_rows.empty:
+        if compact:
+            genres += genres_rows.iloc[0]["genres_compact"]
+        else:
+            genres += genres_rows.iloc[0]["genres_tooltip"]
+    return genres
+
+def write_html(df_genres, df_sorted, html_filename):
     print(f"    Formatting HTML...")
     html_content = HTML_BEGIN
 
@@ -51,7 +61,11 @@ def write_html(df_sorted, html_filename):
             if cart.author_name == "":
                 html_content += "<td></td>"
             else:
-                html_content += f"<td><a href=\"{cart.author_link}\">{cart.author_name}</a></td></tr>\n"
+                html_content += f"<td><a href=\"{cart.author_link}\">{cart.author_name}</a></td>"
+                
+            cart_id_versionless = cart.cart_link.split("/")[-1].split(".")[0].split("-")[0]
+            html_content += f"<td>{find_genres(df_genres, cart_id_versionless, False)}</td></tr>\n"
+            
         except:
             print("!!! Error at cart: ")
             print(cart)
@@ -67,7 +81,7 @@ def write_html(df_sorted, html_filename):
     f.close()
     print("=== HTML file written: " + html_filename)
     
-def write_lua(df_sorted, lua_filename):
+def write_lua(df_genres, df_sorted, df_titles, lua_filename):
     print(f"    Formatting Lua...")
     
     lua_content = f"version = \"{date.today()}\"\n\n"
@@ -83,13 +97,24 @@ def write_lua(df_sorted, lua_filename):
             stars = 0
 
         try:
-            cart_id = cart.cart_link.split("/")[-1].split(".")[0]
-            lua_content += f"\"{stars},"
-            lua_content += f"{cart.date},"
-            lua_content += f"{cart.cart_title[0:32].lower()},"
+            cart_id             = cart.cart_link.split("/")[-1].split(".")[0]
+            cart_id_versionless = cart_id.split("-")[0]
+            cart_year           = cart.date[0:4]
+            
+            title_rows = df_titles[df_titles["thread_link"] == cart.thread_link]
+            if not title_rows.empty:
+                title = title_rows.iloc[0]["thread_title"][0:32].lower()
+            else:
+                title = cart.thread_title[0:32].lower()
+
+            lua_content += "\""
+            lua_content += f"{stars},"
+            lua_content += f"{cart_year},"
+            lua_content += f"{title},"
             lua_content += f"{cart.author_name[0:29].lower()},"
-            lua_content += f"{cart_id}\""
-            lua_content += ",\n"
+            lua_content += f"{cart_id},"
+            lua_content += f"{find_genres(df_genres, cart_id_versionless, True)}"
+            lua_content += "\",\n"
         except:
             print("!!! Error at cart: ")
             print(cart)
@@ -124,21 +149,21 @@ def extract_urls(df_sorted, urls_filename):
 
 if __name__ == "__main__":
     start = datetime.now()
+
+    print("--- Reading file: " + sd.SCRAPED_GAME_GENRES_FILENAME)
+    df_genres = pd.read_csv(sd.SCRAPED_GAME_GENRES_FILENAME, encoding='utf-8', keep_default_na=False)
     
     print("--- Reading file: " + sd.SCRAPED_FEATURED_CARTS_FILENAME)
     df_carts = pd.read_csv(sd.SCRAPED_FEATURED_CARTS_FILENAME, encoding='utf-8', keep_default_na=False)
+    
+    print("--- Reading file: " + sd.TITLE_ADJUSTMENTS_FILENAME)
+    df_titles = pd.read_csv(sd.TITLE_ADJUSTMENTS_FILENAME, encoding='utf-8', keep_default_na=False)   
 
     print("--- Sorting carts...")
     df_sorted = df_carts.sort_values(by=["stars", "date_time"], ascending=[False, False])
 
-    print("--- Sorting by year...")
-    df_year = df_carts
-    df_year["year"] = df_year["date"].str.slice(0,4)
-    df_year = df_year.sort_values(by=["year", "stars", "date_time"], ascending=[False, False, False])
-
-    write_html(df_sorted, sd.RESULT_HTML_FILENAME)
-    write_lua(df_sorted, sd.RESULT_LUA_FILENAME)
-    write_lua(df_year, sd.RESULT_LUA_BY_YEAR_FILENAME)
+    write_html(df_genres, df_sorted, sd.RESULT_HTML_FILENAME)
+    write_lua(df_genres, df_sorted, df_titles, sd.RESULT_LUA_FILENAME)
     extract_urls(df_sorted, sd.RESULT_URLS_FILENAME)
 
     end = datetime.now()

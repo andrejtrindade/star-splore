@@ -6,7 +6,8 @@ It's like browsing "Featured Carts" in **SPLORE**... But they are ranked by **ST
 
 - ⬅️ ➡️: previous / next page
 - ⬆️ ⬇️: previous / next cart
-- ❎ 🅾️: run cart
+- ❎: run cart
+- 🅾️: filter by **GAME GENRE** or by **YEAR**
 
 After you are done with the cart, enter the pause menu and select the last option, `back to ★SPLORE`.
 
@@ -17,7 +18,8 @@ After you are done with the cart, enter the pause menu and select the last optio
 **STAR SPLORE** aims to help you discover some of the best PICO-8 carts ever made.
 
 - That's why only featured carts are included.
-- That's also why carts are ranked by stars, the BBS version of "likes". 
+- That's also why carts are ranked by stars, the BBS version of "likes".
+- Game genres are obtained from [@NerdyTeachers](https://www.lexaloffle.com/bbs/?uid=25898)' excelent [Curated PICO-8 Games](https://nerdyteachers.com/PICO-8/Games/) list.
 
 As imperfect as these metrics may be, they are the ones we have.
 
@@ -25,7 +27,7 @@ As imperfect as these metrics may be, they are the ones we have.
 
 # Why
 
-**STAR SPLORE** was inspired by [@NerdyTeachers](https://www.lexaloffle.com/bbs/?uid=25898)' excelent [200 Best PICO-8 Games](https://nerdyteachers.com/PICO-8/Games/Top200/) list.
+**STAR SPLORE** was inspired by [@NerdyTeachers](https://www.lexaloffle.com/bbs/?uid=25898)' great [200 Best PICO-8 Games](https://nerdyteachers.com/PICO-8/Games/Top200/) list.
 
 As of August 2025, there are almost 10,000 carts marked as "Releases" on the BBS. It may be tough to know where to start.
 
@@ -37,7 +39,7 @@ New carts won't show up until **STAR SPLORE** is updated.
 
 **STAR SPLORE** itself is a regular PICO-8 cart after all. It can't fetch newer carts from the BBS automatically.
 
-On the top right of the screen you can see the publish date of the latest featured cart included in the current version of **STAR SPLORE**.
+On the top right of the screen you can see date when cart information was extrated from the BBS and from NerdyTeachers' Curated PICO-8 Games list.
 
 ![latest featured cart publish date](main_screenshots/star_splore_date.png "latest featured cart publish date")
 

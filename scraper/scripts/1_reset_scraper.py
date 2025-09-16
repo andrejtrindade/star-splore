@@ -24,6 +24,7 @@ if __name__ == "__main__":
     print("=== Deleting temporary files...")
     delete_file(sd.SCRAPED_FEATURED_PAGES_FILENAME)
     delete_file(sd.SCRAPED_FEATURED_CARTS_FILENAME)
+    delete_file(sd.SCRAPED_GAME_GENRES_FILENAME)
 
     print("=== Deleting result files...")
     delete_file(sd.RESULT_HTML_FILENAME)

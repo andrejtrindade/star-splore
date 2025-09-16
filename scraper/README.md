@@ -2,19 +2,22 @@
 
 ## Purpose
 
-This scraper will search [Lexaloffe's BBS](https://www.lexaloffle.com/bbs/) for PICO-8 "Featured Carts".
+This scraper will search [Lexaloffe's BBS](https://www.lexaloffle.com/bbs/) for PICO-8 "Featured Carts". 
 
 No other categories or subcategires ("New Carts" in "Releases", "Work in Progess", "Jam" etc.) will be scraped.
 
+The scraper will also search game genres for carts in [Nerdy Teachers' Curated PICO-8 Games](https://nerdyteachers.com/PICO-8/Games/).
+
 ## Steps
 
-This scraper consists of 5 steps.
+This scraper consists of 6 steps.
 
 1. Reset the scraper, erasing temp and result files. Carts previously downloaded are not deleted.
 2. Scrape "Featured Carts" pages looking for posts linked.
 3. Scrape the posts found in the previous step looking for carts.
-4. Write result files.
-5. Download scraped carts (optional).
+4. Scrape game genres.
+5. Write result files.
+6. Download scraped carts (optional).
 
 Each step is executed by a python script.
 
@@ -23,6 +26,7 @@ Each step is executed by a python script.
 Starting from the directory where this `README.md` is, files are located on the following subdirectries:
 
 - `scripts`: that's where the python scripts are located.
+- `adjustments`: files used by the scripts to "manually" adjust some info for the lua result file.
 - `temp`: temporary files will be created here.
 - `results`: result files will be created here.
 - `carts`: carts will optionally be downloaded here, in .p8.png format.
@@ -35,7 +39,6 @@ Step 4 will create the following files in the `results` subdirectory:
 
 - `featured_carts.html`: this file contains all collected information and links for every scraped cart.
 - `featured_carts.lua`: this file will be included by `star_splore.p8`.
-- `featured_carts_by_year.lua`: this file will be included by `star_splore_by_year.p8`.
 - `featured_carts_urls.txt`: this file contains download URLs for all scraped carts. This can be used to download them all with [Wget](https://www.gnu.org/software/wget/).
 
 ## Pyhton
@@ -87,24 +90,34 @@ python 3_scrape_featured_carts.py
 
 - Estimated time to complete: 5 minutes.
 
-### Step 4: write result_files
+### Step 4: scrape game genres
 
 Type the following command:
 
 ```
-python 4_write_result_files.py
+python 4_scrape_game_genres.py
+```
+
+- Estimated time to complete: 40 seconds.
+
+### Step 5: write result_files
+
+Type the following command:
+
+```
+python 5_write_result_files.py
 ```
 
 - Estimated time to complete: less than 1 second.
 
-### Step 5: download featured carts (optional)
+### Step 6: download featured carts (optional)
 
 This can be very useful if you want to use STAR SPLORE offline (in a handheld, for example).
 
 Type the following command:
 
 ```
-python 5_download_featured_carts.py
+python 6_download_featured_carts.py
 ```
 
 - Estimated time to complete: 3 minutes.
@@ -113,7 +126,7 @@ python 5_download_featured_carts.py
 
 If this scraper gets a connection error it employs the simplest possible retry strategy: it simply tries again, no delay involved.
 - If the error persists, the script will abort after retrying the same URL 3 times. If that happens, simply wait a while and then run that step again. 
-- If you need to run steps 3 or 5 again (the longest ones), the scripts will skip all carts already scraped / downloaded successfully.
+- If you need to run steps 3 or 6 again (the longest ones), the scripts will skip all carts already scraped / downloaded successfully.
 
 ## Use responsibly
 

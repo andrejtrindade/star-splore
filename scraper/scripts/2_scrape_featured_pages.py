@@ -44,7 +44,7 @@ def scrape_pages(filename, link):
 if __name__ == "__main__":
     start = datetime.now()
     
-    scrape_pages(sd.SCRAPED_FEATURED_PAGES_FILENAME, sd.FEATURED_PAGES_LINK)
+    scrape_pages(sd.SCRAPED_FEATURED_PAGES_FILENAME, sd.FEATURED_PAGES_URL)
 
     end = datetime.now()
     print(f"    Script ran in {sd.format_timedelta(end - start)}.")
