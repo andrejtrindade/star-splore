@@ -29,6 +29,7 @@ if __name__ == "__main__":
     print("=== Deleting result files...")
     delete_file(sd.RESULT_HTML_FILENAME)
     delete_file(sd.RESULT_LUA_FILENAME)
+    delete_file(sd.RESULT_LUA_EXTRA_FILENAME)
     delete_file(sd.RESULT_URLS_FILENAME)
 
     print("--- Will not delete previously downloaded carts.")

@@ -1,6 +1,10 @@
 -- main.lua
 
+cartdata_version = 1
+
 function _init()
+	load_extra_carts()
+
 	if not cartdata(cartdata_id) then
 		for i=0,63 do dset(i, 0) end
 	end
@@ -25,9 +29,27 @@ function _draw()
 	screen.draw()
 end
 
+function load_extra_carts()
+	addr = 0
+	while peek(addr) != 0xa do
+		local cart = ""
+		while peek(addr) != 0 do
+			cart ..= chr(peek(addr))
+			addr += 1
+		end
+		add(data, cart)
+		addr += 1
+	end
+end
+
 function load_cartdata(load_cart)
 	
-	if(load_cart) cart = peek2(0x5e00)
+	if peek2(0x5e08) != cartdata_version then
+		cart, filter, genre, year = 0, 0, 0, 0
+		return
+	end
+	
+	if (load_cart) cart = peek2(0x5e00)
 	
 	filter = peek2(0x5e02)
 	genre  = peek2(0x5e04)

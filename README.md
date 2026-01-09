@@ -26,9 +26,10 @@ This project is mostly done. Therefore, I'm not accepting pull requests for this
 ## Files and Folders
 
 - **star_splore.p8**: PICO-8 source code, containing graphics, sound and code.
-- **inc**: the lua files included in the .p8 file.
-- **exports/cart**: image with the compressed cartridge embedded into it, playable in PICO-8.
-- **scraper**: the scraper used to collect featured carts information from the [Lexaloffle BBS](https://www.lexaloffle.com/bbs/).
+- **inc/**: lua files included in the star_splore.p8 file.
+- **tools/write_extra_carts.p8**: tool that writes extra metadata to star_splore.p8 ROM (GFX/MAP).
+- **exports/cart/star_splore.p8.png**: image with the compressed cartridge embedded into it, playable in PICO-8.
+- **scraper**: the scraper used to collect featured carts information from the [Lexaloffle BBS](https://www.lexaloffle.com/bbs/) and game genres from [NerdyTeachers' Curated PICO-8 Games](https://nerdyteachers.com/PICO-8/Games/).
 - **posts**: drafts of topics to be posted on the BBS, including screenshots and GIFs.
 
 ## Notes

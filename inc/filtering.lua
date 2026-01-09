@@ -23,12 +23,8 @@ update = function()
 			local cart_data = data[i]
 			if filter == 2 then
 				local compact = split(cart_data)[6]
-				if genre == 20 then
-					if (#compact == 0) add(filtered_data, cart_data)
-				else
-					for j=1,#compact do
-						if (ord(compact[j]) == genre + 96) add(filtered_data, cart_data)
-					end
+				for j=1,#compact do
+					if (ord(compact[j]) == genre + 96) add(filtered_data, cart_data)
 				end
 			end
 			if filter == 3 then
@@ -54,4 +50,5 @@ function save_cartdata()
 	poke2(0x5e02, filter)
 	poke2(0x5e04, genre)
 	poke2(0x5e06, year)
+	poke2(0x5e08, cartdata_version)
 end

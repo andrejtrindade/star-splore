@@ -3,17 +3,11 @@ from datetime import datetime
 
 import scraper_definitions as sd
 
-genres_dict = {
-    "action"    : "a", "adventure"    : "b", "arcade"     : "c", "casual"     : "d", "fighting"    : "e",
-    "highscore" : "f", "horror"       : "g", "cards"      : "h", "platformer" : "i", "puzzle"      : "j",
-    "rhythm"    : "k", "role-playing" : "l", "rogue-like" : "m", "shooter"    : "n", "speedrunner" : "o",
-    "sports"    : "p", "stealth"      : "q", "strategy"   : "r", "survival"   : "s"}
-
 def scrape_genres(filename, link):
     # open file
     print(f"=== Writing file: {filename}")
     f = open(filename, "w", encoding='utf-8')
-    print("cart_id_versionless,genres_tooltip,genres_compact", file=f)
+    print("cart_id_versionless,genres_tooltip", file=f)
 
     total_posts = 0
     page_num = 1
@@ -27,10 +21,7 @@ def scrape_genres(filename, link):
         if divs:
             
             for div in divs:
-                genres_compact = ""
                 genres_tooltip = div.find_all('div')[-1]["data-original-title"].strip()
-                for genre in genres_tooltip.split():
-                    genres_compact += genres_dict[genre]
                 
                 thumb = div.find("img")["src"].split("/")[-1]
                 if thumb[0:6] == "pico8_":
@@ -39,8 +30,7 @@ def scrape_genres(filename, link):
                     prefix_size = 4
                 
                 line  = thumb[prefix_size:].split(".")[0].split("-")[0] + "," # cart ID, versionless
-                line += genres_tooltip + ","
-                line += genres_compact
+                line += genres_tooltip
                 
                 print(line, file=f)
                 

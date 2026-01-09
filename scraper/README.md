@@ -26,19 +26,20 @@ Each step is executed by a python script.
 Starting from the directory where this `README.md` is, files are located on the following subdirectries:
 
 - `scripts`: that's where the python scripts are located.
-- `adjustments`: files used by the scripts to "manually" adjust some info for the lua result file.
+- `adjustments`: files used by the scripts to override some info.
 - `temp`: temporary files will be created here.
 - `results`: result files will be created here.
 - `carts`: carts will optionally be downloaded here, in .p8.png format.
 
-Aside from `scripts`, all other subdirectories will be created if necessary in step 1.
+Aside from `scripts` and `adjustments`, the other 3 subdirectories will be created if necessary in step 1.
 
 ## Results
 
-Step 4 will create the following files in the `results` subdirectory:
+Step 5 will create the following files in the `results` subdirectory:
 
 - `featured_carts.html`: this file contains all collected information and links for every scraped cart.
 - `featured_carts.lua`: this file will be included by `star_splore.p8`.
+- `featured_carts_extra.lua`: metadata that will be written to `star_splore.p8` ROM (GFX/MAP) by  `write_extra_carts.p8`.
 - `featured_carts_urls.txt`: this file contains download URLs for all scraped carts. This can be used to download them all with [Wget](https://www.gnu.org/software/wget/).
 
 ## Pyhton
@@ -75,10 +76,12 @@ python 1_reset_scraper.py
 Type the following command:
 
 ```
-python 2_scrape_featured_pages.py
+python 2_scrape_featured_pages.py 1
 ```
 
 - Estimated time to complete: 10 seconds.
+
+*Note: The argument (the "1" at the end of the command) is the initial page to scrape.*
 
 ### Step 3: scrape featured carts
 
@@ -127,6 +130,16 @@ python 6_download_featured_carts.py
 If this scraper gets a connection error it employs the simplest possible retry strategy: it simply tries again, no delay involved.
 - If the error persists, the script will abort after retrying the same URL 3 times. If that happens, simply wait a while and then run that step again. 
 - If you need to run steps 3 or 6 again (the longest ones), the scripts will skip all carts already scraped / downloaded successfully.
+
+### Retrying step 2
+
+If step 2 exceeds the BBS search limit, the script will show a warning like this:
+
+```
+WARNING: Wait at least 10 minutes, then run this step again with argument 7 to resume scraping featured pages.
+```
+
+In my experience, though, this only happens if you modify step 2 to include search terms.
 
 ## Use responsibly
 

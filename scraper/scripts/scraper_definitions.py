@@ -16,26 +16,32 @@ SCRAPED_GAME_GENRES_FILENAME       = "../temp/4_scraped_game_genres.csv"
 # Result files
 RESULT_HTML_FILENAME               = "../results/featured_carts.html"
 RESULT_LUA_FILENAME                = "../results/featured_carts.lua"
+RESULT_LUA_EXTRA_FILENAME          = "../results/featured_carts_extra.lua"
 RESULT_URLS_FILENAME               = "../results/featured_carts_urls.txt"
+
+# Carts in RESULT_LUA_FILENAME
+MAX_LUA_CARTS                      = 500
 
 # Adjustment files
 TITLE_ADJUSTMENTS_FILENAME         = "../adjustments/title_adjustments.csv"
+GAME_GENRE_ADJUSTMENTS_FILENAME    = "../adjustments/game_genre_adjustments.csv"
 
 # Lexaloffle links
 LEXALOFFLE_BASE_LINK               = "https://www.lexaloffle.com"
 LEXALOFFLE_BBS_LINK                = "https://www.lexaloffle.com/bbs/"
+LEXALOFFLE_LISTER_LINK             = LEXALOFFLE_BBS_LINK + "lister.php"
 
 # Pages query string
 PAGES_QS_FORUM                     = "?cat=7"
 PAGES_QS_CARTS_TAB                 = "&carts_tab=1"
-PAGES_QS_RELEASES                  = "&sub=2" # originally "&#sub=2", but requests.get() discards everything after the hashtag
+PAGES_QS_RELEASES                  = "&sub=2" # "&#sub=2" in BBS link, ajax sends it to lister.php
 PAGES_QS_MODE_CARTS                = "&mode=carts"
 PAGES_QS_FEATURED_ORDER            = "&orderby=featured"
 PAGES_QS_PAGE_NUM                  = "&page=" # originally before mode
 PAGES_QS                           = PAGES_QS_FORUM + PAGES_QS_CARTS_TAB + PAGES_QS_RELEASES + PAGES_QS_MODE_CARTS + PAGES_QS_FEATURED_ORDER + PAGES_QS_PAGE_NUM
 
 # Pages URL
-FEATURED_PAGES_URL                 = LEXALOFFLE_BBS_LINK + PAGES_QS
+FEATURED_PAGES_URL                 = LEXALOFFLE_LISTER_LINK + PAGES_QS
 
 # Nerdy Teachers link
 NERDY_TEACHERS_CURATED_LINK        = "https://nerdyteachers.com/PICO-8/Games/"
