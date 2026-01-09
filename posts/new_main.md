@@ -1,9 +1,8 @@
-[#star_splore-2#]
+[#star_splore-3#]
 
 It's like browsing and launching "Featured Carts" in **SPLORE**...
 
-- But they are ranked by **STAR**s!
-- And you can filter by **GAME GENRE**!
+But they are ranked by **STAR**s! And you can filter by **GAME GENRE**!
 
 ## Controls
 
@@ -21,9 +20,9 @@ After you are done with the cart, enter the pause menu and select the last optio
 
 **STAR SPLORE** aims to help you discover some of the best PICO-8 carts ever made.
 
-- That's why only featured carts are included.
+- That's why filters are provided.
+- That's why this is a "featured carts only" browser / launcher.
 - That's why carts are ranked by stars, the BBS version of "likes".
-- That's why filters by *game genre* and by *year* are provided.
 
 As imperfect as these metrics may be, they are the ones we have.
 
@@ -39,11 +38,11 @@ As imperfect as these metrics may be, they are the ones we have.
 
 Game genres for 280 carts were extracted from @NerdyTeachers' excelent [Curated PICO-8 Games](https://nerdyteachers.com/PICO-8/Games/) list. 
 
-I tagged the remaining 229 carts. I added new genres for *demos*, *tools* and *collections*.
+I tagged the remaining 229 carts, adding new genres for *collections*, *demos* and *tools*.
 
 If you feel I mistagged a cart, drop a comment!
 
-*Note: STAR SPLORE was actually inspired by @NerdyTeachers' [200 Best PICO-8 Games](https://nerdyteachers.com/PICO-8/Games/Top200/) list.*
+*Note: STAR SPLORE was actually inspired by NerdyTeachers' [200 Best PICO-8 Games](https://nerdyteachers.com/PICO-8/Games/Top200/) list.*
 
 ## Updates
 
@@ -51,7 +50,7 @@ New carts won't show up until **STAR SPLORE** is updated.
 
 **STAR SPLORE** itself is a regular PICO-8 cart after all. It can't fetch newer carts from the BBS automatically.
 
-The date you see on the top right of the screen is **STAR SPLORE**'s current version. This is the date when information was extrated from the BBS and from @NerdyTeachers' curated list.
+The date you see on the top right of the screen is **STAR SPLORE**'s current version. This is the date when information was extrated from the BBS and from NerdyTeachers' curated list.
 
 ## Offline
 
@@ -61,11 +60,11 @@ Note that running multicarts offline can be tricky, no matter how you launch the
 
 ## Scraper
 
-On [STAR SPLORE's GitHub repository](https://github.com/andrejtrindade/star-splore) you will find the [scraper](https://github.com/andrejtrindade/star-splore/tree/main/scraper) used to extract information from the BBS and from @NerdyTeachers' curated list..
+On [STAR SPLORE's GitHub repository](https://github.com/andrejtrindade/star-splore) you will find the [scraper](https://github.com/andrejtrindade/star-splore/tree/main/scraper) used to extract information from the BBS and from NerdyTeachers' curated list.
 
 ### HTML
 
-You can browse every information scraped in [this HTML page](https://github.com/andrejtrindade/star-splore/blob/main/scraper/results/featured_carts.html) (download it and open in your browser).
+You can browse all scraped information in [this HTML page](https://github.com/andrejtrindade/star-splore/blob/main/scraper/results/featured_carts.html) (download it and open in your browser).
 
 ### Download
 
@@ -89,7 +88,11 @@ When you are on your handheld, though, with no wi-fi or no keyboard... Or when y
 
 ## Changelog
 
-- **Version 2026-01-09**: tagged the remaining carts, also added extra carts metadata to ROM.
+[hidden]
+
+- **Version 2026-01-09**: tagged remaining carts, also added extra carts metadata to ROM.
 - **Version 2025-09-16**: added filters (by game genre and by year), also adjusted cart names to better fit the interface.
 - **Version 2025-08-28**: celebrating 500 featured carts!
 - **Version 2025-08-16**: initial version.
+
+[/hidden]
